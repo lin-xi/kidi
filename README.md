@@ -28,7 +28,7 @@ model.create("projects", {
 });
 
 ```
-###service
+### service
 project.js
 ```
 import {service} from "kidi";
@@ -58,7 +58,7 @@ class PorjectService {
 }
 ```
 
-###router
+### router
 project.js
 ```
 import {router} from "kidi";
@@ -69,7 +69,7 @@ router.get('/add', (req, res, next, services) => {
 })
 
 ```
-###server.js
+### server.js
 ```
 import {app} from "kidi";
 app.run(3000);
