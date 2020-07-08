@@ -5,23 +5,14 @@ kidi is a koa based node.js framework with powerful dependency injection and Exp
 
 `koa`  `di` `model`  `service`
 
-<p align="center">
-  <a href="https://travis-ci.org/lin-xi/kidi">
-    <img src="https://travis-ci.org/lin-xi/kidi.svg?branch=master">
-  </a>
-  <a href="https://coveralls.io/github/lin-xi/kidi?branch=master">
-    <img src="https://coveralls.io/repos/github/lin-xi/kidi/badge.svg?branch=master">
-  </a>
-  <a href="https://npmcharts.com/compare/kidi?minimal=true">
-    <img src="http://img.shields.io/npm/dm/kidi.svg">
-  </a>
-  <br>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
-  </a>
-</p>
+
+[![build](https://travis-ci.org/lin-xi/kidi.svg?branch=master "build")](https://travis-ci.org/lin-xi/kidi)
+[![coverage](https://coveralls.io/repos/github/lin-xi/kidi/badge.svg?branch=master "coverage")](https://coveralls.io/github/lin-xi/kidi?branch=master)
+[![download](http://img.shields.io/npm/dm/kidi.svg "download")](https://npmcharts.com/compare/kidi?minimal=true)
+![LICENSE](https://img.shields.io/badge/License-MIT-yellow.svg "LICENSE")
 
 <hr>
+
 ## Start in 5mins
 
 ### model
