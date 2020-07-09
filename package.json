@@ -2,10 +2,10 @@
   "name": "kidi",
   "version": "1.0.5",
   "description": "kidi is a koa based node.js framework with powerful dependency injection and Express like API style，and a powerful UI scaffolds！",
-  "main": "lib/main.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest --coverage --detectOpenHandles",
-    "dev": "node src/server.js --trace-warnings",
+    "dev": "node lib/main.js",
     "publish": "npm publish --registry http://registry.npmjs.org"
   },
   "repository": {
