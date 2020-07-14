@@ -2,18 +2,18 @@ import fetch from 'node-fetch';
 import Sequelize from 'sequelize';
 import {app, router, model, service} from '../lib/index.js';
 
-app.run(5000, {
+app.run(6000, {
     "staticPath": "test/static",
     "uploadPath": "test/upload",
     "database": {
         "type": "sqlite",
         "config": {
-            "path": "test/data/test.db"
+            "path": "test/data/test_service.db"
         }
     }
 });
 
-let userModel = model.create('user', {
+model.create('userModel', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -26,51 +26,41 @@ let userModel = model.create('user', {
     }  //资源配置
 })
 
-service.create('user', class UserService {
-    constructor(models) {
-        this.model = models.user;
+@service("user", "userModel")
+class UserService {
+    constructor(userModel) {
+        this.model = userModel;
     }
-    async add(user) {
+    add(user) {
         return this.model.create(user);
     }
-    async update(where, data) {
+    find(data) {
+        return this.model.findAll({ where: data });
+    }
+    update(where, data) {
         return this.model.update(data, { where });
     }
-    async del(where) {
-        this.model.destroy({ where });
+    del(where) {
+        return this.model.destroy({ where });
+    }
+}
+
+router.get("/test/service", async (ctx, res, next, services) => {
+    let user = services.user;
+    let record = await user.add({name: "kidi-service-new"});
+
+    let records = await user.find({name: "kidi-service-new"});
+    if(records.length > 0) {
+        res.json({"result": records[0].dataValues.name})
+    } else {
+        res.json({"result": "none"})
     }
 })
 
-app.on('error', err => {
-    app.context.trace(err);
-});
-
 // service--------------------------
-describe("model", ()=> {
-    test('test service: invoke', () => {
-        router.post("/test/post", async (ctx, res, next, services) => {
-            res.json({result: 'post'});
-            let user = services.user;
-            user.create({name: "kidi-service"});
-
-            let u = await user.findOne({where: {name: "kidi-service"}});
-            expect(u.name).toBe("kidi-service");
-        })
-        
+describe("service", () => {
+    test('test service: di', async () => {
+        let result = await fetch("http://localhost:6000/test/service").then(res => res.json());
+        expect(result.result).toBe("kidi-service-new");
     });
 })
-
-// di-------------------------------
-describe("di", ()=> {
-    test('test model di', () => {
-        expect(sum(1, 2)).toBe(3);
-    });
-
-    test('test service di', () => {
-        expect(sum(1, 2)).toBe(3);
-    });
-});
-
-function sum(a, b)  {
-    return a + b;
-}

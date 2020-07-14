@@ -21,7 +21,7 @@ project.js
 import {model} from "kidi";
 import Sequelize from 'sequelize';
 
-model.create("projects", {
+model.create("projectModel", {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -37,27 +37,14 @@ model.create("projects", {
 ```
 ### service
 project.js
-```
-import {service} from "kidi";
-
-class PorjectService {
-    constructor(models) {
-        this.model = models.projects
-    }
-    add() {
-        console.log("model add");
-    }
-}
-service.create('project', PorjectService)
-```
 decoration style
 ```
 import {service} from "kidi";
 
-@service('project')
+@service('project', 'projectModel') // service name: project, inject projectModel
 class PorjectService {
-    constructor(models) {
-        this.model = models.projects
+    constructor(projectModel) {
+        this.model = projectModel
     }
     add() {
         console.log("model add");

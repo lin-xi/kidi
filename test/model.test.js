@@ -13,7 +13,7 @@ app.run(4000, {
     }
 });
 
-let userModel = model.create('user', {
+let userModel = model.create('userModel', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -26,20 +26,21 @@ let userModel = model.create('user', {
     }  //资源配置
 })
 
-service.create('user', class UserService {
-    constructor(models) {
-        this.model = models.user;
+@service("user", "userModel")
+class UserService {
+    constructor(userModel) {
+        this.model = userModel;
     }
-    async add(user) {
+    add(user) {
         return this.model.create(user);
     }
-    async update(where, data) {
+    update(where, data) {
         return this.model.update(data, { where });
     }
-    async del(where) {
+    del(where) {
         this.model.destroy({ where });
     }
-})
+}
 
 app.on('error', err => {
     app.context.trace(err);

@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/lin-xi/kidi#readme",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.4",
     "better-sqlite3": "^7.1.0",
     "koa": "^2.13.0",
     "koa-accesslog": "^0.0.2",
@@ -43,10 +42,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
-    "@babel/plugin-transform-classes": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.4",
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
     "@babel/register": "^7.10.4",
     "@std/esm": "^0.26.0",
