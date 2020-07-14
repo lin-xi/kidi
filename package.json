@@ -4,7 +4,7 @@
   "description": "kidi is a koa based node.js framework with powerful dependency injection and Express like API style，and a powerful UI scaffolds！",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest --coverage --detectOpenHandles",
+    "test": "jest --coverage --detectOpenHandles --forceExit",
     "dev": "node lib/main.js"
   },
   "repository": {
