@@ -15,6 +15,19 @@ kidi is a koa based node.js framework with powerful dependency injection and Exp
 
 ## Start in 5mins
 
+### structure
+```
+.
+├── routers
+│   └── project.js
+├── models
+│   └── project.js
+├── services
+│   └── project.js
+├── server.config.js
+└── server.js
+```
+
 ### model
 project.js
 ```
