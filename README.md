@@ -37,11 +37,12 @@ model.create("projectModel", {
 ```
 ### service
 project.js
-decoration style
+(decoration style)
 ```
 import {service} from "kidi";
 
-@service('project', 'projectModel') // service name: project, inject projectModel
+@service('project', 'projectModel') 
+// service name: project, inject: projectModel
 class PorjectService {
     constructor(projectModel) {
         this.model = projectModel
@@ -69,6 +70,35 @@ import {app} from "kidi";
 app.run(3000);
 ```
 
-## 
+## Server configuration
+
+add a server.config.js file in the root directory
+```
+{
+    "staticPath": "/public",
+    "uploadPath": "test/upload",
+    "database": {
+        "dialect": "sqlite",
+        "config": {
+            "path": "/data/something.db"
+        }
+    }
+}
+```
+
+or
+
+```
+app.run(3000, {
+    "staticPath": "test/static",
+    "uploadPath": "test/upload",
+    "database": {
+        "type": "sqlite",
+        "config": {
+            "path": "test/data/test.db"
+        }
+    }
+});
+```
 
 
