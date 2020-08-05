@@ -76,9 +76,12 @@ router.post("/test/form", (ctx, res, next) => {
 router.post("/test/formdata", (ctx, res, next) => {
     res.json({result: ctx.request.body});
 })
-router.get("/test/redirect_get", (ctx, res, next) => {
+router.redirect("/test/redirect_get", "/test/get", 301);
+
+router.get("/test/redirect", (ctx, res, next) => {
     res.redirect("http://localhost:3000/test/get", 301);
-})
+});
+
 router.get("/test/jsonp", (ctx, res, next) => {
     let callback = ctx.query.callback || 'nothing';
     res.jsonp(callback, {
@@ -203,8 +206,13 @@ describe("router", ()=> {
         expect(result.result).toBe("kidi");
     });
 
-    test('test res:redirect', async () => {
+    test('test res:redirect_get', async () => {
         let result = await fetch("http://localhost:3000/test/redirect_get").then(res => res.json());
+        expect(result.result).toBe('get');
+    });
+
+    test('test res:redirect', async () => {
+        let result = await fetch("http://localhost:3000/test/redirect").then(res => res.json());
         expect(result.result).toBe('get');
     });
 
