@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/lin-xi/kidi#readme",
   "dependencies": {
-    "better-sqlite3": "^7.1.0",
     "koa": "^2.13.0",
     "koa-accesslog": "^0.0.2",
     "koa-body": "^4.2.0",
@@ -37,8 +36,8 @@
     "koa-response-time": "^2.1.0",
     "koa-router": "^9.1.0",
     "koa-static": "^5.0.0",
-    "sequelize": "^6.2.4",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.0",
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",

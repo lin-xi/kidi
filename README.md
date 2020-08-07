@@ -116,10 +116,9 @@ add a server.config.js file in the root directory
     "staticPath": "/public",
     "uploadPath": "test/upload",
     "database": {
-        "dialect": "sqlite",
-        "config": {
-            "path": "/data/something.db"
-        }
+        type: "sqlite",
+        database: "/data/something.db",
+        logging: true
     }
 }
 ```
