@@ -6,7 +6,7 @@ app.run(4000, {
   uploadPath: "test/upload",
   database: {
     type: "sqlite",
-    database: "/data/something.db",
+    database: "test/data/test.db",
     logging: true,
   },
 });

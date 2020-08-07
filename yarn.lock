@@ -5151,8 +5151,8 @@ sprintf-js@~1.0.2:
 
 sqlite3@^5.0.0:
   version "5.0.0"
-  resolved "https://registry.npmjs.org/sqlite3/-/sqlite3-5.0.0.tgz#1bfef2151c6bc48a3ab1a6c126088bb8dd233566"
-  integrity sha512-rjvqHFUaSGnzxDy2AHCwhHy6Zp6MNJzCPGYju4kD8yi6bze4d1/zMTg6C7JI49b7/EM7jKMTvyfN/4ylBKdwfw==
+  resolved "https://registry.npm.taobao.org/sqlite3/download/sqlite3-5.0.0.tgz?cache=0&sync_timestamp=1593591656965&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsqlite3%2Fdownload%2Fsqlite3-5.0.0.tgz#1bfef2151c6bc48a3ab1a6c126088bb8dd233566"
+  integrity sha1-G/7yFRxrxIo6sabBJgiLuN0jNWY=
   dependencies:
     node-addon-api "2.0.0"
     node-pre-gyp "^0.11.0"
