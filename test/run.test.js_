@@ -1,0 +1,50 @@
+import {
+  createConnection,
+  EntitySchema,
+  getRepository,
+  getManager,
+} from "typeorm";
+
+function connect(entities) {
+  return createConnection({
+    type: "sqlite",
+    database:
+      "/Users/linxi/work/workspace/javascript/github/kidi/test/data/test.db",
+    logging: true,
+    synchronize: true,
+    entities,
+  });
+}
+
+test("test TypeORM", async () => {
+  const Category = new EntitySchema({
+    name: "category",
+    columns: {
+      id: {
+        type: Number,
+        primary: true,
+        generated: true,
+      },
+      name: {
+        type: String,
+      },
+    },
+  });
+
+  let db = await connect([Category]);
+  console.log("🟠 database connected!");
+
+  // let respository = getRepository(Category);
+  // let ins = respository.create({
+  //   name: "Car",
+  // });
+  // await respository.save(ins);
+
+  const manager = getManager();
+  const ins = manager.create(Category, {
+    name: "Car",
+  });
+
+  let list = await manager.find(Category);
+  console.log(list);
+});
