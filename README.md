@@ -37,14 +37,12 @@ import Sequelize from 'sequelize';
 
 model.create("projectModel", {
   id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
+    type: Number,
+    primary: true,
+    generated: true,
   },
   name: {
-    type: Sequelize.STRING(128),
-    allowNull: false
+    type: String,
   }
 });
 
@@ -109,16 +107,17 @@ app.run(3000);
 
 ## Server configuration
 
-add a server.config.js file in the root directory
+add a server.config.json file in the root directory
 
 ```
 {
     "staticPath": "/public",
     "uploadPath": "test/upload",
     "database": {
-        type: "sqlite",
-        database: "/data/something.db",
-        logging: true
+        "type": "sqlite",
+        "database": "/data/something.db",
+        "logging": true
+        "synchronize": true,
     }
 }
 ```
@@ -130,10 +129,10 @@ app.run(3000, {
     "staticPath": "test/static",
     "uploadPath": "test/upload",
     "database": {
-        "type": "sqlite",
-        "config": {
-            "path": "test/data/test.db"
-        }
+       "type": "sqlite",
+        "database": "/data/something.db",
+        "logging": true
+        "synchronize": true,
     }
 });
 ```
