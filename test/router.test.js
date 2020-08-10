@@ -81,17 +81,21 @@ router.get("/test/jsonp", (ctx, res, next) => {
 });
 
 // app--------------------------
+
 function pending() {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve();
-    }, 1500);
+    }, 1000);
   });
 }
 
 describe("app--------", () => {
-  test("test serve static files", async () => {
+  beforeEach(async () => {
     await pending();
+  });
+
+  test("test serve static files", async () => {
     let result = await fetch("http://localhost:3000/file.txt").then((res) =>
       res.text()
     );
@@ -101,8 +105,11 @@ describe("app--------", () => {
 
 // router--------------------------
 describe("router", () => {
-  test("test router:get", async () => {
+  beforeEach(async () => {
     await pending();
+  });
+
+  test("test router:get", async () => {
     let result = await fetch("http://localhost:3000/test/get").then((res) =>
       res.json()
     );
@@ -110,7 +117,6 @@ describe("router", () => {
   });
 
   test("test router:post", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/post", {
       method: "POST",
     }).then((res) => res.json());
@@ -118,7 +124,6 @@ describe("router", () => {
   });
 
   test("test router:put", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/put", {
       method: "PUT",
     }).then((res) => res.json());
@@ -126,7 +131,6 @@ describe("router", () => {
   });
 
   test("test router:delete", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/delete", {
       method: "DELETE",
     }).then((res) => res.json());
@@ -134,7 +138,6 @@ describe("router", () => {
   });
 
   test("test router:patch", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/patch", {
       method: "PATCH",
     }).then((res) => res.json());
@@ -142,7 +145,6 @@ describe("router", () => {
   });
 
   test("test router:all", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/all").then((res) =>
       res.json()
     );
@@ -150,7 +152,6 @@ describe("router", () => {
   });
 
   test("test router:use", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/use").then((res) =>
       res.json()
     );
@@ -158,7 +159,6 @@ describe("router", () => {
   });
 
   test("test router:param", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/param/8").then((res) =>
       res.json()
     );
@@ -171,7 +171,6 @@ describe("router", () => {
   });
 
   test("test router:dynamic param", async () => {
-    await pending();
     let result = await fetch(
       "http://localhost:3000/test/dynamic_param/138"
     ).then((res) => res.json());
@@ -179,7 +178,6 @@ describe("router", () => {
   });
 
   test("test post: application/json", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/postdata", {
       method: "POST",
       headers: {
@@ -193,7 +191,6 @@ describe("router", () => {
   });
 
   test("test post: form-urlencoded", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/form", {
       method: "POST",
       headers: {
@@ -205,7 +202,6 @@ describe("router", () => {
   });
 
   test("test upload: formdata", async () => {
-    await pending();
     let formdata = new FormData();
     formdata.append("hello", "kidi");
     let result = await fetch("http://localhost:3000/test/formdata", {
@@ -219,13 +215,11 @@ describe("router", () => {
   });
 
   test("test res:status", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/res_status");
     expect(result.status).toBe(404);
   });
 
   test("test cookie:set", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/set_cookie");
     expect(result.headers.get("set-cookie")).toBe(
       "sessionid=d9w29skuw32k9duao2l02j3j7d8apkl; path=/; httponly"
@@ -233,7 +227,6 @@ describe("router", () => {
   });
 
   test("test cookie:get", async () => {
-    await pending();
     let result = await fetch("http://localhost:3000/test/get_cookie", {
       method: "GET",
       headers: {
@@ -245,7 +238,6 @@ describe("router", () => {
   });
 
   test("test res:redirect_get", async () => {
-    await pending();
     let result = await fetch(
       "http://localhost:3000/test/redirect_get"
     ).then((res) => res.json());
@@ -253,7 +245,6 @@ describe("router", () => {
   });
 
   test("test res:redirect", async () => {
-    await pending();
     let result = await fetch(
       "http://localhost:3000/test/redirect"
     ).then((res) => res.json());
@@ -261,7 +252,6 @@ describe("router", () => {
   });
 
   test("test res:jsonp", async () => {
-    await pending();
     let result = await fetch(
       "http://localhost:3000/test/jsonp?callback=kidi"
     ).then((res) => res.text());
@@ -269,7 +259,6 @@ describe("router", () => {
   });
 
   test("test router:prefix", async () => {
-    await pending();
     router.prefix("/kidi");
     let result = await fetch(
       "http://localhost:3000/kidi/test/get"
