@@ -1,5 +1,4 @@
 import fetch from 'node-fetch';
-import Sequelize from 'sequelize';
 import {app, router, model, service} from '../lib/index.js';
 
 app.run(6000, {
@@ -7,24 +6,22 @@ app.run(6000, {
     "uploadPath": "test/upload",
     "database": {
         "type": "sqlite",
-        "config": {
-            "path": "test/data/test_service.db"
-        }
-    }
+        "database": "test/data/test.db",
+        "logging": true,
+        "synchronize": true,
+    },
 });
 
-model.create('userModel', {
+let userModel = model.create("userModel", {
     id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+        type: Number,
+        primary: true,
+        generated: true,
     },
     name: {
-        type: Sequelize.STRING(128),
-        allowNull: false
-    }  //资源配置
-})
+        type: String,
+    }, //资源配置
+});
 
 // inject model
 @service("user", "userModel")
@@ -33,10 +30,10 @@ class UserService {
         this.model = userModel;
     }
     add(user) {
-        return this.model.create(user);
+        return this.model.add(user);
     }
     find(data) {
-        return this.model.findAll({ where: data });
+        return this.model.find({ where: data });
     }
 }
 
@@ -58,14 +55,26 @@ router.get("/test/service", async (ctx, res, next, services) => {
 
     let records = await user2.find2({name: "kidi-service-new"});
     if(records.length > 0) {
-        res.json({"result": records[0].dataValues.name})
+        res.json({"result": records[0].name})
     } else {
         res.json({"result": "none"})
     }
 })
 
+function pending() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+        resolve();
+        }, 1000);
+    });
+}
+
 // service--------------------------
 describe("service", () => {
+    beforeEach(async () => {
+        await pending();
+    });
+
     test('test service: di', async () => {
         let result = await fetch("http://localhost:6000/test/service").then(res => res.json());
         expect(result.result).toBe("kidi-service-new");
