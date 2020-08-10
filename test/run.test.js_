@@ -34,17 +34,17 @@ test("test TypeORM", async () => {
   let db = await connect([Category]);
   console.log("🟠 database connected!");
 
-  // let respository = getRepository(Category);
-  // let ins = respository.create({
-  //   name: "Car",
-  // });
-  // await respository.save(ins);
-
-  const manager = getManager();
-  const ins = manager.create(Category, {
+  let respository = getRepository(Category);
+  let ins = respository.create({
     name: "Car",
   });
+  await respository.save(ins);
 
-  let list = await manager.find(Category);
-  console.log(list);
+  // const manager = getManager();
+  // const ins = manager.create(Category, {
+  //   name: "Car",
+  // });
+
+  // let list = await manager.find(Category);
+  // console.log(list);
 });

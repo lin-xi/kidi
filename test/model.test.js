@@ -60,7 +60,7 @@ describe("model", () => {
   test("test model:find record", async () => {
     await userModel.add({ name: "kidi33" });
     const list = await userModel.find({ name: "kidi33" });
-    expect(list.length).toBe(1);
+    expect(list.length).toBeGreaterThan(0);
   });
 
   test("test model:findOne record", async () => {
@@ -72,27 +72,30 @@ describe("model", () => {
   test("test model:findAndCount record", async () => {
     await userModel.add({ name: "kidi33" });
     let [ins, count] = await userModel.findAndCount({ name: "kidi33" });
-    expect(ins.name).toBe("kidi33");
-    expect(count).toBe(1);
+    console.log("findAndCount>>>>", ins)
+    expect(ins[0].name).toBe("kidi33");
+    expect(count).toBeGreaterThan(0);
   });
 
   test("test model:count record", async () => {
     await userModel.add({ name: "kidi33" });
     let count = await userModel.count({ name: "kidi33" });
-    expect(count).toBe(1);
+    expect(count).toBeGreaterThan(0);
   });
 
   test("test router:merge record", async () => {
     await userModel.add({ name: "kidi44" });
     let user = await userModel.findOne({ name: "kidi44" });
-    let newIns = await userModel.merge(user, { name: "kidi55" });
-    expect(newIns.name).toBe("kidi55");
+    await userModel.merge(user, { name: "kidi55" });
+    user = await userModel.findOne({ name: "kidi55" });
+    expect(user.name).toBe("kidi55");
   });
 
   test("test router:update record", async () => {
     await userModel.add({ name: "kidi44" });
-    let newIns = await userModel.update({ name: "kidi44" }, { name: "kidi55" });
-    expect(newIns.name).toBe("kidi55");
+    await userModel.update({ name: "kidi44" }, { name: "kidi55" });
+    let user = await userModel.findOne({ name: "kidi55" });
+    expect(user.name).toBe("kidi55");
   });
 
   test("test router:delete record", async () => {
