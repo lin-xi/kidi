@@ -33,7 +33,6 @@ project.js
 
 ```
 import {model} from "kidi";
-import Sequelize from 'sequelize';
 
 model.create("projectModel", {
   id: {
@@ -108,6 +107,7 @@ app.run(3000);
 ## Server configuration
 
 add a server.config.json file in the root directory
+`sqlite` configuration
 
 ```
 {
