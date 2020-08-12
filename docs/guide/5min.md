@@ -1,37 +1,4 @@
----
-pageClass: index-page
----
-
-# kidi
-
-![kidi](kidi.png)
-
-kidi is a light weight framework runs on node intergrated with sqlite and ORM, and a powerful web console.
-
-[![build](https://travis-ci.org/lin-xi/kidi.svg?branch=master "build")](https://travis-ci.org/lin-xi/kidi)
-[![Coverage Status](https://coveralls.io/repos/github/lin-xi/kidi/badge.svg)](https://coveralls.io/github/lin-xi/kidi)
-[![download](http://img.shields.io/npm/dm/kidi.svg "download")](https://npmcharts.com/compare/kidi?minimal=true)
-![LICENSE](https://img.shields.io/badge/License-MIT-yellow.svg "LICENSE")
-
-<hr>
-
-<highlight-code slot="codeText" lang="vue">
-    <template>
-        <div class="demo-button">
-        <div>
-            <dt-button>默认按钮</dt-button>
-            <dt-button type="primary">主要按钮</dt-button>
-            <dt-button type="success">成功按钮</dt-button>
-            <dt-button type="info">信息按钮</dt-button>
-            <dt-button type="warning">警告按钮</dt-button>
-            <dt-button type="danger">危险按钮</dt-button>
-        </div>
-    </template>
-</highlight-code>
-
-## Start in 5mins
-
-### structure
+## 目录结构
 
 ```
 .
@@ -45,7 +12,7 @@ kidi is a light weight framework runs on node intergrated with sqlite and ORM, a
 └── server.js
 ```
 
-### model
+## 模型
 
 project.js
 
@@ -65,7 +32,7 @@ model.create("projectModel", {
 
 ```
 
-### service
+## 服务
 
 project.js
 (decoration style)
@@ -101,7 +68,7 @@ class PorjectService {
 service.create('project', PorjectService, 'projectModel');
 ```
 
-### router
+## 路由
 
 project.js
 
@@ -115,14 +82,14 @@ router.get('/add', (req, res, next, services) => {
 
 ```
 
-### server.js
+## 启动应用
 
 ```
 import {app} from "kidi";
 app.run(3000);
 ```
 
-## Server configuration
+## 应用配置
 
 add a server.config.json file in the root directory
 `sqlite` configuration
@@ -154,9 +121,3 @@ app.run(3000, {
     }
 });
 ```
-
-# Realse Note
-
-`version 1.1.0`
-
-- [x] change ORM to typeORM

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --coverage --detectOpenHandles --forceExit",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "dev": "node lib/main.js"
+    "dev": "node lib/main.js",
+    "pages": "vuepress dev docs",
+    "pages:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,9 @@
   },
   "homepage": "https://github.com/lin-xi/kidi#readme",
   "dependencies": {
+    "@babel/plugin-transform-object-assign": "^7.10.4",
+    "element-ui": "^2.13.2",
+    "highlight.js": "^10.1.2",
     "koa": "^2.13.0",
     "koa-accesslog": "^0.0.2",
     "koa-body": "^4.2.0",
@@ -37,7 +42,10 @@
     "koa-router": "^9.1.0",
     "koa-static": "^5.0.0",
     "sqlite3": "^5.0.0",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.25",
+    "vue": "^2.6.11",
+    "vue-highlight.js": "^3.1.0",
+    "vuepress": "^1.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -53,6 +61,7 @@
     "babel-jest": "^26.1.0",
     "coveralls": "^3.1.0",
     "jest": "^26.1.0",
+    "less-loader": "^6.2.0",
     "node-fetch": "^2.6.0",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.6"
