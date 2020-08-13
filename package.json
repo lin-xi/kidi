@@ -1,6 +1,6 @@
 {
   "name": "kidi",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "kidi is a koa based node.js framework with powerful dependency injection and Express like API style，and a powerful UI scaffolds！",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lin-xi/kidi.git"
+    "url": "https://github.com/lin-xi/kidi.git"
   },
   "keywords": [
     "kidi",
