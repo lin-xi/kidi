@@ -2,7 +2,7 @@
 
 ![kidi](kidi.png)
 
-[https://lin-ix.github.io/kidi](https://lin-ix.github.io/kidi)
+[https://lin-xi.github.io/kidi](https://lin-xi.github.io/kidi)
 
 kidi is a light weight framework runs on node intergrated with sqlite and ORM, and a powerful web console.
 
