@@ -15,9 +15,7 @@
 | prefix   | path, middleware | 无     |
 | redirect | path, middleware | 无     |
 
-#### get
-
-get(path, middleware)
+#### get(path, middleware)
 
 ```
 router.get("/test/get", (ctx, res, next) => {
@@ -25,9 +23,67 @@ router.get("/test/get", (ctx, res, next) => {
 });
 ```
 
-#### post
+#### post(path, middleware)
 
-get(path, middleware)
+```
+router.post("/test/post", (ctx, res, next) => {
+  res.json({ result: "post" });
+});
+```
+
+#### put(path, middleware)
+
+```
+router.put("/test/put", (ctx, res, next) => {
+  res.json({ result: "put" });
+});
+```
+
+#### patch(path, middleware)
+
+```
+router.patch("/test/patch", (ctx, res, next) => {
+  res.json({ result: "patch" });
+});
+```
+
+#### delete(path, middleware)
+
+```
+router.delete("/test/get", (ctx, res, next) => {
+  res.json({ result: "delete" });
+});
+```
+
+#### all(path, middleware)
+
+```
+router.all("/test/all", (ctx, res, next) => {
+  res.json({ result: "all" });
+});
+```
+
+#### use(path, middleware)
+
+```
+router.use("/test/use", (ctx, res, next) => {
+  ctx.query.hello = "world";
+  next();
+});
+```
+
+#### param(path, middleware)
+
+```
+router.param("page", (page, ctx, next) => {
+  if (/\n+/.test(page)) {
+    return (ctx.status = 404);
+  }
+  return next();
+})
+```
+
+#### prefix(path, middleware)
 
 ```
 router.get("/test/get", (ctx, res, next) => {
@@ -35,82 +91,8 @@ router.get("/test/get", (ctx, res, next) => {
 });
 ```
 
-#### put
-
-get(path, middleware)
+#### redirect(sourcePath, disPath, statusCode)
 
 ```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
-```
-
-#### patch
-
-get(path, middleware)
-
-```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
-```
-
-#### delete
-
-get(path, middleware)
-
-```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
-```
-
-#### all
-
-get(path, middleware)
-
-```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
-```
-
-#### use
-
-get(path, middleware)
-
-```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
-```
-
-#### param
-
-get(path, middleware)
-
-```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
-```
-
-#### prefix
-
-get(path, middleware)
-
-```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
-```
-
-#### redirect
-
-get(path, middleware)
-
-```
-router.get("/test/get", (ctx, res, next) => {
-  res.json({ result: "get" });
-});
+router.redirect("/test/redirect_get", "/test/get", 301);
 ```

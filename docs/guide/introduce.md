@@ -1,4 +1,4 @@
-# kidi
+# kidi 介绍
 
 ## kidi 是什么？
 

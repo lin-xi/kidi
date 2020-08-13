@@ -29,8 +29,8 @@ module.exports = {
             collapsable: false, // 可选的, 默认值是 true,
           },
           {
-            title: "感受一下", // 必要的
-            path: "/guide/init.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+            title: "客户端工具", // 必要的
+            path: "/guide/cli.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
             collapsable: false, // 可选的, 默认值是 true,
           },
           {
@@ -70,8 +70,8 @@ module.exports = {
                 collapsable: false, // 可选的, 默认值是 true,
               },
               {
-                title: "postgrade", // 必要的
-                path: "/guide/database/postgrade.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                title: "postgres", // 必要的
+                path: "/guide/database/postgres.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
                 collapsable: false, // 可选的, 默认值是 true,
               },
               {

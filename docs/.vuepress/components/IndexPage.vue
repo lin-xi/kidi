@@ -6,19 +6,19 @@
     <div class="menu">
       <div class="item">
         <img src="../public/images/skate.png" />
-        Guide
+        <a href="/guide/5min.html">快速入门</a>
       </div>
       <div class="item">
         <img src="../public/images/earphone.png" />
-        API
+        <a href="/api/index.html">API</a>
       </div>
       <div class="item">
         <img src="../public/images/hat.png" />
-        CLI
+        <a href="/cli/index.html">CLI</a>
       </div>
       <div class="item">
         <img src="../public/images/game.png" />
-        GitHub
+        <a href="https://github.com/lin-xi/kidi">GitHub</a>
       </div>
     </div>
   </div>

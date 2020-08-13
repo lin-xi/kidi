@@ -1,4 +1,6 @@
-## 目录结构
+# 快速入门
+
+### 目录结构
 
 ```
 .
@@ -12,7 +14,7 @@
 └── server.js
 ```
 
-## 模型
+### 模型
 
 project.js
 
@@ -20,19 +22,21 @@ project.js
 import {model} from "kidi";
 
 model.create("projectModel", {
-  id: {
-    type: Number,
-    primary: true,
-    generated: true,
-  },
-  name: {
-    type: String,
-  }
+    columns: {
+        id: {
+            type: Number,
+            primary: true,
+            generated: true,
+        },
+        name: {
+            type: String,
+        }
+    }
 });
 
 ```
 
-## 服务
+### 服务
 
 project.js
 (decoration style)
@@ -68,7 +72,7 @@ class PorjectService {
 service.create('project', PorjectService, 'projectModel');
 ```
 
-## 路由
+### 路由
 
 project.js
 
@@ -82,14 +86,14 @@ router.get('/add', (req, res, next, services) => {
 
 ```
 
-## 启动应用
+### 启动应用
 
 ```
 import {app} from "kidi";
 app.run(3000);
 ```
 
-## 应用配置
+### 应用配置
 
 add a server.config.json file in the root directory
 `sqlite` configuration
