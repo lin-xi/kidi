@@ -55,36 +55,9 @@ module.exports = {
           },
           {
             title: "数据库", // 必要的
-            path: "/guide/database", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+            path: "/guide/database.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
             collapsable: true, // 可选的, 默认值是 true,
             sidebarDepth: 1, // 可选的, 默认值是 1
-            children: [
-              {
-                title: "sqlite", // 必要的
-                path: "/guide/database/sqlite.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-                collapsable: false, // 可选的, 默认值是 true,
-              },
-              {
-                title: "mysql", // 必要的
-                path: "/guide/database/mysql.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-                collapsable: false, // 可选的, 默认值是 true,
-              },
-              {
-                title: "postgres", // 必要的
-                path: "/guide/database/postgres.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-                collapsable: false, // 可选的, 默认值是 true,
-              },
-              {
-                title: "mongoDB", // 必要的
-                path: "/guide/database/mongodb.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-                collapsable: false, // 可选的, 默认值是 true,
-              },
-              {
-                title: "RocksDB", // 必要的
-                path: "/guide/database/rocksdb.md", // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-                collapsable: false, // 可选的, 默认值是 true,
-              },
-            ],
           },
           {
             title: "中间件", // 必要的

@@ -2,7 +2,7 @@
 
 model 集成了 typeORM，详情文档可参考<a href="https://typeorm.io/" target="_blank">typeORM</a>
 
-## 创建 model
+### 创建 model
 
 **create(name, options)**
 

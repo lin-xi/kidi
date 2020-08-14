@@ -26,7 +26,7 @@ model.create("projectModel", {
         id: {
             type: Number,
             primary: true,
-            generated: true,
+            generated: "increment",
         },
         name: {
             type: String,

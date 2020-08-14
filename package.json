@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest --coverage --detectOpenHandles --forceExit",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "build": "rm -rf lib/* & babel src -d lib",
     "dev": "node lib/main.js",
     "pages": "vuepress dev docs",
     "pages:build": "vuepress build docs"
