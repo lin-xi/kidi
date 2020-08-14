@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { app, router, model, service } from "../lib/index.js";
+import { app, router, model, service } from "../src/index.js";
 
 let userModel = model.create("userModel", {
   columns: {
