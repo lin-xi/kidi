@@ -13,9 +13,7 @@ export default class ModelBase {
       if (dbconfig) {
         switch (dbconfig.type) {
           case "mysql":
-            break;
           case "postgres":
-            break;
           case "sqlite":
             this.db = await this.connectSqlite(dbconfig);
             // this.db.synchronize(true);
@@ -34,9 +32,10 @@ export default class ModelBase {
   }
 
   connectSqlite(opts) {
-    opts.database = path.join(ROOT, opts.database);
+    if (opts.database) {
+      opts.database = path.join(ROOT, opts.database);
+    }
     opts.entities = Object.values(this.models).map((item) => item.entity);
-    console.log("connect>>>>>", opts);
     return createConnection(opts);
   }
 }

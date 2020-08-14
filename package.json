@@ -1,13 +1,14 @@
 {
   "name": "kidi",
-  "version": "1.1.2",
+  "version": "1.1.5",
   "description": "kidi is a koa based node.js framework with powerful dependency injection and Express like API style，and a powerful UI scaffolds！",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest --coverage --detectOpenHandles --forceExit",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "build": "rm -rf lib/* & babel src -d lib",
-    "dev": "node lib/main.js"
+    "dev": "node lib/main.js",
+    "pub": "npm publish --registry https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "koa-response-time": "^2.1.0",
     "koa-router": "^9.1.0",
     "koa-static": "^5.0.0",
+    "mysql": "^2.18.1",
     "sqlite3": "^5.0.0",
     "typeorm": "^0.2.25"
   },

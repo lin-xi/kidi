@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { app, router, model, service } from "../lib/index.js";
+import { app, router, model, service } from "../src/index.js";
 
 let userModel = model.create("userModel", {
   id: {
@@ -72,7 +72,7 @@ describe("model", () => {
   test("test model:findAndCount record", async () => {
     await userModel.add({ name: "kidi33" });
     let [ins, count] = await userModel.findAndCount({ name: "kidi33" });
-    console.log("findAndCount>>>>", ins)
+    console.log("findAndCount>>>>", ins);
     expect(ins[0].name).toBe("kidi33");
     expect(count).toBeGreaterThan(0);
   });
