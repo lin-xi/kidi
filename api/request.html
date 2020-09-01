@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>请求(Request) | kidi</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    
+    <meta name="description" content="an application framework for node.js">
+    <link rel="preload" href="/kidi/assets/css/0.styles.850aaaf3.css" as="style"><link rel="preload" href="/kidi/assets/js/app.d279499f.js" as="script"><link rel="preload" href="/kidi/assets/js/2.e26b6411.js" as="script"><link rel="preload" href="/kidi/assets/js/12.e9d356c4.js" as="script"><link rel="prefetch" href="/kidi/assets/js/10.5bc9e4d7.js"><link rel="prefetch" href="/kidi/assets/js/11.e8f852e7.js"><link rel="prefetch" href="/kidi/assets/js/13.544ff188.js"><link rel="prefetch" href="/kidi/assets/js/14.77f68658.js"><link rel="prefetch" href="/kidi/assets/js/15.88b72fd8.js"><link rel="prefetch" href="/kidi/assets/js/16.eaf8e36e.js"><link rel="prefetch" href="/kidi/assets/js/17.035d6933.js"><link rel="prefetch" href="/kidi/assets/js/18.bbf83931.js"><link rel="prefetch" href="/kidi/assets/js/19.f158237b.js"><link rel="prefetch" href="/kidi/assets/js/20.b4d35498.js"><link rel="prefetch" href="/kidi/assets/js/21.013f903b.js"><link rel="prefetch" href="/kidi/assets/js/22.cd787436.js"><link rel="prefetch" href="/kidi/assets/js/23.9678eb1a.js"><link rel="prefetch" href="/kidi/assets/js/24.3ac84bb1.js"><link rel="prefetch" href="/kidi/assets/js/25.2b43a813.js"><link rel="prefetch" href="/kidi/assets/js/26.94eb8e4c.js"><link rel="prefetch" href="/kidi/assets/js/27.9a28f22f.js"><link rel="prefetch" href="/kidi/assets/js/28.0c564211.js"><link rel="prefetch" href="/kidi/assets/js/29.5aea3984.js"><link rel="prefetch" href="/kidi/assets/js/3.f031ee86.js"><link rel="prefetch" href="/kidi/assets/js/30.3a3e1dca.js"><link rel="prefetch" href="/kidi/assets/js/31.fe772ebf.js"><link rel="prefetch" href="/kidi/assets/js/32.0ee47716.js"><link rel="prefetch" href="/kidi/assets/js/33.7fee3c5f.js"><link rel="prefetch" href="/kidi/assets/js/34.0bc667b8.js"><link rel="prefetch" href="/kidi/assets/js/35.5502e706.js"><link rel="prefetch" href="/kidi/assets/js/36.f498e19e.js"><link rel="prefetch" href="/kidi/assets/js/37.9b649049.js"><link rel="prefetch" href="/kidi/assets/js/38.69bce6d8.js"><link rel="prefetch" href="/kidi/assets/js/4.6b7fdeb0.js"><link rel="prefetch" href="/kidi/assets/js/5.cbdad5e4.js"><link rel="prefetch" href="/kidi/assets/js/6.7420fcbc.js"><link rel="prefetch" href="/kidi/assets/js/7.aa7f0c0e.js"><link rel="prefetch" href="/kidi/assets/js/8.8b989321.js"><link rel="prefetch" href="/kidi/assets/js/9.5001ff72.js">
+    <link rel="stylesheet" href="/kidi/assets/css/0.styles.850aaaf3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/kidi/" class="home-link router-link-active"><!----> <span class="site-name">kidi</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/kidi/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/kidi/guide/" class="nav-link">
+  教程
+</a></div><div class="nav-item"><a href="/kidi/api/" class="nav-link router-link-active">
+  API
+</a></div><div class="nav-item"><a href="/kidi/cli/" class="nav-link">
+  CLI
+</a></div><div class="nav-item"><a href="/kidi/example/" class="nav-link">
+  案例
+</a></div><div class="nav-item"><a href="https://github.com/lin-xi/kidi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/kidi/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/kidi/guide/" class="nav-link">
+  教程
+</a></div><div class="nav-item"><a href="/kidi/api/" class="nav-link router-link-active">
+  API
+</a></div><div class="nav-item"><a href="/kidi/cli/" class="nav-link">
+  CLI
+</a></div><div class="nav-item"><a href="/kidi/example/" class="nav-link">
+  案例
+</a></div><div class="nav-item"><a href="https://github.com/lin-xi/kidi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/kidi/guide/" class="sidebar-heading clickable"><span>教程</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/kidi/guide/introduce.html" class="sidebar-link">介绍</a></li><li><a href="/kidi/guide/install.html" class="sidebar-link">安装</a></li><li><a href="/kidi/guide/cli.html" class="sidebar-link">客户端工具</a></li><li><a href="/kidi/guide/5min.html" class="sidebar-link">快速入门</a></li><li><a href="/kidi/guide/router.html" class="sidebar-link">路由</a></li><li><a href="/kidi/guide/model.html" class="sidebar-link">模型</a></li><li><a href="/kidi/guide/service.html" class="sidebar-link">服务</a></li><li><a href="/kidi/guide/database.html" class="sidebar-link">数据库</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/kidi/guide/middleware" class="sidebar-heading clickable"><span>中间件</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/kidi/guide/config.html" class="sidebar-link">全局配置</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/kidi/guide/deploy.md" class="sidebar-heading clickable"><span>运行部署</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/kidi/guide/example/" class="sidebar-heading clickable"><span>案例</span> <span class="arrow right"></span></a> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/kidi/api/" class="sidebar-heading clickable router-link-active open"><span>API</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/kidi/api/app.html" class="sidebar-link">app</a></li><li><a href="/kidi/api/context.html" class="sidebar-link">context</a></li><li><a href="/kidi/api/request.html" aria-current="page" class="active sidebar-link">request</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/kidi/api/request.html#api" class="sidebar-link">API</a></li><li class="sidebar-sub-header"><a href="/kidi/api/request.html#内容协商" class="sidebar-link">内容协商</a></li></ul></li><li><a href="/kidi/api/response.html" class="sidebar-link">response</a></li><li><a href="/kidi/api/router.html" class="sidebar-link">router</a></li><li><a href="/kidi/api/model.html" class="sidebar-link">model</a></li><li><a href="/kidi/api/service.html" class="sidebar-link">service</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/kidi/cli/" class="sidebar-heading clickable"><span>CLI</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/kidi/cli/cli.html" class="sidebar-link">命令行工具</a></li><li><a href="/kidi/cli/database.html" class="sidebar-link">数据管理</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="请求-request"><a href="#请求-request" class="header-anchor">#</a> 请求(Request)</h1> <p>Koa Request 对象是在 node 的 原生请求对象之上的抽象，提供了诸多对 HTTP 服务器开发有用的功能。</p> <h2 id="api"><a href="#api" class="header-anchor">#</a> API</h2> <p><strong>request.header</strong>
+请求头对象。这与 node http.IncomingMessage 上的 headers 字段相同</p> <p><strong>request.header=</strong>
+设置请求头对象。</p> <p><strong>request.headers</strong>
+请求头对象。别名为 request.header.</p> <p><strong>request.headers=</strong>
+设置请求头对象。别名为 request.header=.</p> <p><strong>request.method</strong>
+请求方法。</p> <p><strong>request.method=</strong>
+设置请求方法，对于实现诸如 methodOverride() 的中间件是有用的。</p> <p><strong>request.length</strong>
+返回以数字返回请求的 Content-Length，或 undefined。</p> <p><strong>request.url</strong>
+获取请求 URL.</p> <p><strong>request.url=</strong>
+设置请求 URL, 对 url 重写有用。</p> <p><strong>request.originalUrl</strong>
+获取请求原始 URL。</p> <p><strong>request.origin</strong>
+获取 URL 的来源，包括 protocol 和 host。</p> <div class="language- extra-class"><pre class="language-text"><code>ctx.request.origin
+// =&gt; http://example.com
+</code></pre></div><p><strong>request.href</strong>
+获取完整的请求 URL，包括 protocol，host 和 url。</p> <div class="language- extra-class"><pre class="language-text"><code>ctx.request.href;
+// =&gt; http://example.com/foo/bar?q=1
+</code></pre></div><p><strong>request.path</strong>
+获取请求路径名。</p> <p><strong>request.path=</strong>
+设置请求路径名，并在存在时保留查询字符串。</p> <p><strong>request.querystring</strong>
+根据 ? 获取原始查询字符串.</p> <p><strong>request.querystring=</strong>
+设置原始查询字符串。</p> <p><strong>request.search</strong>
+使用 ? 获取原始查询字符串。</p> <p><strong>request.search=</strong>
+设置原始查询字符串。</p> <p><strong>request.host</strong>
+存在时获取主机（hostname:port）。当 app.proxy 是 true 时支持 X-Forwarded-Host，否则使用 Host。</p> <p><strong>request.hostname</strong>
+存在时获取主机名。当 app.proxy 是 true 时支持 X-Forwarded-Host，否则使用 Host。</p> <p>如果主机是 IPv6, Koa 解析到 WHATWG URL API, 注意 这可能会影响性能。</p> <p><strong>request.URL</strong>
+获取 WHATWG 解析的 URL 对象。</p> <p><strong>request.type</strong>
+获取请求 Content-Type, 不含 &quot;charset&quot; 等参数。</p> <p>译者注: 这里其实是只获取 mime-type, 详见源码及其注释</p> <div class="language- extra-class"><pre class="language-text"><code>const ct = ctx.request.type;
+// =&gt; &quot;image/png&quot;
+</code></pre></div><p><strong>request.charset</strong>
+存在时获取请求字符集，或者 undefined：</p> <div class="language- extra-class"><pre class="language-text"><code>ctx.request.charset;
+// =&gt; &quot;utf-8&quot;
+</code></pre></div><p><strong>request.query</strong>
+获取解析的查询字符串, 当没有查询字符串时，返回一个空对象。请注意，此 getter <em>不</em> 支持嵌套解析。</p> <p>例如 &quot;color=blue&amp;size=small&quot;:</p> <div class="language- extra-class"><pre class="language-text"><code>{
+    color: 'blue',
+    size: 'small'
+}
+</code></pre></div><p><strong>request.query=</strong>
+将查询字符串设置为给定对象。 请注意，此 setter <em>不</em> 支持嵌套对象。</p> <div class="language- extra-class"><pre class="language-text"><code>ctx.query = { next: '/login' };
+</code></pre></div><p><strong>request.fresh</strong>
+检查请求缓存是否“新鲜”，也就是内容没有改变。此方法用于 If-None-Match / ETag, 和 If-Modified-Since 和 Last-Modified 之间的缓存协商。 在设置一个或多个这些响应头后应该引用它。</p> <div class="language- extra-class"><pre class="language-text"><code>// 新鲜度检查需要状态 20x 或 304
+ctx.status = 200;
+ctx.set('ETag', '123');
+
+// 缓存是好的
+if (ctx.fresh) {
+ctx.status = 304;
+return;
+}
+
+// 缓存是陈旧的
+// 获取新数据
+ctx.body = await db.find('something');
+</code></pre></div><p><strong>request.stale</strong>
+与 request.fresh 相反.</p> <p><strong>request.protocol</strong>
+返回请求协议，“https” 或 “http”。当 app.proxy 是 true 时支持 X-Forwarded-Proto。</p> <p><strong>request.secure</strong>
+通过 ctx.protocol == &quot;https&quot; 来检查请求是否通过 TLS 发出。</p> <p><strong>request.ip</strong>
+请求远程地址。 当 app.proxy 是 true 时支持 X-Forwarded-Proto。</p> <p><strong>request.ips</strong>
+当 X-Forwarded-For 存在并且 app.proxy 被启用时，这些 ips 的数组被返回，从上游 - &gt;下游排序。 禁用时返回一个空数组。</p> <p>例如，如果值是 &quot;client, proxy1, proxy2&quot;，将会得到数组 [&quot;client&quot;, &quot;proxy1&quot;, &quot;proxy2&quot;]。</p> <p>大多数反向代理（nginx）都通过 proxy_add_x_forwarded_for 设置了 x-forwarded-for，这带来了一定的安全风险。恶意攻击者可以通过伪造 X-Forwarded-For 请求头来伪造客户端的 ip 地址。 客户端发送的请求具有 'forged' 的 X-Forwarded-For 请求头。 在由反向代理转发之后，request.ips 将是 ['forged', 'client', 'proxy1', 'proxy2']。</p> <p>Koa 提供了两种方式来避免被绕过。</p> <p>如果您可以控制反向代理，则可以通过调整配置来避免绕过，或者使用 koa 提供的 app.proxyIpHeader 来避免读取 x-forwarded-for 获取 ips。</p> <div class="language- extra-class"><pre class="language-text"><code>const app = new Koa({
+    proxy: true,
+    proxyIpHeader: 'X-Real-IP',
+});
+</code></pre></div><p>如果您确切知道服务器前面有多少个反向代理，则可以通过配置 app.maxIpsCount 来避免读取用户的伪造的请求头：</p> <div class="language- extra-class"><pre class="language-text"><code>const app = new Koa({
+    proxy: true,
+    maxIpsCount: 1, // 服务器前只有一个代理
+});
+
+// request.header['X-Forwarded-For'] === [ '127.0.0.1', '127.0.0.2' ];
+// ctx.ips === [ '127.0.0.2' ];
+</code></pre></div><p><strong>request.subdomains</strong>
+以数组形式返回子域。</p> <p>子域是应用程序主域之前主机的点分隔部分。默认情况下，应用程序的域名假定为主机的最后两个部分。这可以通过设置 app.subdomainOffset 来更改。</p> <p>例如，如果域名为“tobi.ferrets.example.com”：</p> <p>如果 app.subdomainOffset 未设置, ctx.subdomains 是 [&quot;ferrets&quot;, &quot;tobi&quot;]. 如果 app.subdomainOffset 是 3, ctx.subdomains 是 [&quot;tobi&quot;].</p> <p>request.is(types...)
+检查传入请求是否包含 Content-Type 消息头字段， 并且包含任意的 mime type。 如果没有请求主体，返回 null。 如果没有内容类型，或者匹配失败，则返回 false。 反之则返回匹配的 content-type。</p> <div class="language- extra-class"><pre class="language-text"><code>// 使用 Content-Type: text/html; charset=utf-8
+ctx.is('html'); // =&gt; 'html'
+ctx.is('text/html'); // =&gt; 'text/html'
+ctx.is('text/\*', 'text/html'); // =&gt; 'text/html'
+
+// 当 Content-Type 是 application/json 时
+ctx.is('json', 'urlencoded'); // =&gt; 'json'
+ctx.is('application/json'); // =&gt; 'application/json'
+ctx.is('html', 'application/\*'); // =&gt; 'application/json'
+
+ctx.is('html'); // =&gt; false
+</code></pre></div><p>例如，如果要确保仅将图像发送到给定路由：</p> <div class="language- extra-class"><pre class="language-text"><code>if (ctx.is('image/\*')) {
+    // 处理
+} else {
+    ctx.throw(415, 'images only!');
+}
+</code></pre></div><h2 id="内容协商"><a href="#内容协商" class="header-anchor">#</a> 内容协商</h2> <p>Koa 的 request 对象包括由 accepts 和 negotiator 提供的内容协商实用函数。</p> <p>这些实用函数是：</p> <p>request.accepts(types)</p> <p>request.acceptsEncodings(types)</p> <p>request.acceptsCharsets(charsets)</p> <p>request.acceptsLanguages(langs)</p> <p>如果没有提供类型，则返回 所有 可接受的类型。</p> <p>如果提供多种类型，将返回最佳匹配。 如果没有找到匹配项，则返回一个 false，你应该向客户端发送一个 406 &quot;Not Acceptable&quot; 响应。</p> <p>如果接收到任何类型的接收头，则会返回第一个类型。 因此，你提供的类型的顺序很重要。</p> <p><strong>request.accepts(types)</strong></p> <p>检查给定的 type(s) 是否可以接受，如果 true，返回最佳匹配，否则为 false。 type 值可能是一个或多个 mime 类型的字符串，如 application/json，扩展名称如 json，或数组 [&quot;json&quot;, &quot;html&quot;, &quot;text/plain&quot;]。</p> <div class="language- extra-class"><pre class="language-text"><code>// Accept: text/html
+ctx.accepts('html');
+// =&gt; &quot;html&quot;
+
+// Accept: text/\*, application/json
+ctx.accepts('html');
+// =&gt; &quot;html&quot;
+ctx.accepts('text/html');
+// =&gt; &quot;text/html&quot;
+ctx.accepts('json', 'text');
+// =&gt; &quot;json&quot;
+ctx.accepts('application/json');
+// =&gt; &quot;application/json&quot;
+
+// Accept: text/\*, application/json
+ctx.accepts('image/png');
+ctx.accepts('png');
+// =&gt; false
+
+// Accept: text/\*;q=.5, application/json
+ctx.accepts(['html', 'json']);
+ctx.accepts('html', 'json');
+// =&gt; &quot;json&quot;
+
+// No Accept header
+ctx.accepts('html', 'json');
+// =&gt; &quot;html&quot;
+ctx.accepts('json', 'html');
+// =&gt; &quot;json&quot;
+</code></pre></div><p>你可以根据需要多次调用 ctx.accepts()，或使用 switch：</p> <div class="language- extra-class"><pre class="language-text"><code>switch (ctx.accepts('json', 'html', 'text')) {
+    case 'json': break;
+    case 'html': break;
+    case 'text': break;
+    default: ctx.throw(406, 'json, html, or text only');
+}
+</code></pre></div><p><strong>request.acceptsEncodings(encodings)</strong></p> <p>检查 encodings 是否可以接受，返回最佳匹配为 true，否则为 false。 请注意，您应该将 identity 作为编码之一！</p> <div class="language- extra-class"><pre class="language-text"><code>// Accept-Encoding: gzip
+ctx.acceptsEncodings('gzip', 'deflate', 'identity');
+// =&gt; &quot;gzip&quot;
+
+ctx.acceptsEncodings(['gzip', 'deflate', 'identity']);
+// =&gt; &quot;gzip&quot;
+当没有给出参数时，所有接受的编码将作为数组返回：
+
+// Accept-Encoding: gzip, deflate
+ctx.acceptsEncodings();
+// =&gt; [&quot;gzip&quot;, &quot;deflate&quot;, &quot;identity&quot;]
+</code></pre></div><p>请注意，如果客户端显式地发送 identity;q=0，那么 identity 编码（这意味着没有编码）可能是不可接受的。 虽然这是一个边缘的情况，你仍然应该处理这种方法返回 false 的情况。</p> <p><strong>request.acceptsCharsets(charsets)</strong></p> <p>检查 charsets 是否可以接受，在 true 时返回最佳匹配，否则为 false。</p> <div class="language- extra-class"><pre class="language-text"><code>// Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5
+ctx.acceptsCharsets('utf-8', 'utf-7');
+// =&gt; &quot;utf-8&quot;
+
+ctx.acceptsCharsets(['utf-7', 'utf-8']);
+// =&gt; &quot;utf-8&quot;
+</code></pre></div><p>当没有参数被赋予所有被接受的字符集将作为数组返回：</p> <div class="language- extra-class"><pre class="language-text"><code>// Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5
+ctx.acceptsCharsets();
+// =&gt; [&quot;utf-8&quot;, &quot;utf-7&quot;, &quot;iso-8859-1&quot;]
+</code></pre></div><p><strong>request.acceptsLanguages(langs)</strong></p> <p>检查 langs 是否可以接受，如果为 true，返回最佳匹配，否则为 false。</p> <div class="language- extra-class"><pre class="language-text"><code>// Accept-Language: en;q=0.8, es, pt
+ctx.acceptsLanguages('es', 'en');
+// =&gt; &quot;es&quot;
+
+ctx.acceptsLanguages(['en', 'es']);
+// =&gt; &quot;es&quot;
+</code></pre></div><p>当没有参数被赋予所有接受的语言将作为数组返回：</p> <div class="language- extra-class"><pre class="language-text"><code>// Accept-Language: en;q=0.8, es, pt
+ctx.acceptsLanguages();
+// =&gt; [&quot;es&quot;, &quot;pt&quot;, &quot;en&quot;]
+</code></pre></div><p><strong>request.idempotent</strong></p> <p>检查请求是否是幂等的。</p> <p><strong>request.socket</strong></p> <p>返回请求套接字。</p> <p><strong>request.get(field)</strong></p> <p>返回请求头(header), field 不区分大小写.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/kidi/assets/js/app.d279499f.js" defer></script><script src="/kidi/assets/js/2.e26b6411.js" defer></script><script src="/kidi/assets/js/12.e9d356c4.js" defer></script>
+  </body>
+</html>

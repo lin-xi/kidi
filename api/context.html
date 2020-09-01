@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>上下文(Context) | kidi</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    
+    <meta name="description" content="an application framework for node.js">
+    <link rel="preload" href="/kidi/assets/css/0.styles.850aaaf3.css" as="style"><link rel="preload" href="/kidi/assets/js/app.d279499f.js" as="script"><link rel="preload" href="/kidi/assets/js/2.e26b6411.js" as="script"><link rel="preload" href="/kidi/assets/js/9.5001ff72.js" as="script"><link rel="prefetch" href="/kidi/assets/js/10.5bc9e4d7.js"><link rel="prefetch" href="/kidi/assets/js/11.e8f852e7.js"><link rel="prefetch" href="/kidi/assets/js/12.e9d356c4.js"><link rel="prefetch" href="/kidi/assets/js/13.544ff188.js"><link rel="prefetch" href="/kidi/assets/js/14.77f68658.js"><link rel="prefetch" href="/kidi/assets/js/15.88b72fd8.js"><link rel="prefetch" href="/kidi/assets/js/16.eaf8e36e.js"><link rel="prefetch" href="/kidi/assets/js/17.035d6933.js"><link rel="prefetch" href="/kidi/assets/js/18.bbf83931.js"><link rel="prefetch" href="/kidi/assets/js/19.f158237b.js"><link rel="prefetch" href="/kidi/assets/js/20.b4d35498.js"><link rel="prefetch" href="/kidi/assets/js/21.013f903b.js"><link rel="prefetch" href="/kidi/assets/js/22.cd787436.js"><link rel="prefetch" href="/kidi/assets/js/23.9678eb1a.js"><link rel="prefetch" href="/kidi/assets/js/24.3ac84bb1.js"><link rel="prefetch" href="/kidi/assets/js/25.2b43a813.js"><link rel="prefetch" href="/kidi/assets/js/26.94eb8e4c.js"><link rel="prefetch" href="/kidi/assets/js/27.9a28f22f.js"><link rel="prefetch" href="/kidi/assets/js/28.0c564211.js"><link rel="prefetch" href="/kidi/assets/js/29.5aea3984.js"><link rel="prefetch" href="/kidi/assets/js/3.f031ee86.js"><link rel="prefetch" href="/kidi/assets/js/30.3a3e1dca.js"><link rel="prefetch" href="/kidi/assets/js/31.fe772ebf.js"><link rel="prefetch" href="/kidi/assets/js/32.0ee47716.js"><link rel="prefetch" href="/kidi/assets/js/33.7fee3c5f.js"><link rel="prefetch" href="/kidi/assets/js/34.0bc667b8.js"><link rel="prefetch" href="/kidi/assets/js/35.5502e706.js"><link rel="prefetch" href="/kidi/assets/js/36.f498e19e.js"><link rel="prefetch" href="/kidi/assets/js/37.9b649049.js"><link rel="prefetch" href="/kidi/assets/js/38.69bce6d8.js"><link rel="prefetch" href="/kidi/assets/js/4.6b7fdeb0.js"><link rel="prefetch" href="/kidi/assets/js/5.cbdad5e4.js"><link rel="prefetch" href="/kidi/assets/js/6.7420fcbc.js"><link rel="prefetch" href="/kidi/assets/js/7.aa7f0c0e.js"><link rel="prefetch" href="/kidi/assets/js/8.8b989321.js">
+    <link rel="stylesheet" href="/kidi/assets/css/0.styles.850aaaf3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/kidi/" class="home-link router-link-active"><!----> <span class="site-name">kidi</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/kidi/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/kidi/guide/" class="nav-link">
+  教程
+</a></div><div class="nav-item"><a href="/kidi/api/" class="nav-link router-link-active">
+  API
+</a></div><div class="nav-item"><a href="/kidi/cli/" class="nav-link">
+  CLI
+</a></div><div class="nav-item"><a href="/kidi/example/" class="nav-link">
+  案例
+</a></div><div class="nav-item"><a href="https://github.com/lin-xi/kidi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/kidi/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/kidi/guide/" class="nav-link">
+  教程
+</a></div><div class="nav-item"><a href="/kidi/api/" class="nav-link router-link-active">
+  API
+</a></div><div class="nav-item"><a href="/kidi/cli/" class="nav-link">
+  CLI
+</a></div><div class="nav-item"><a href="/kidi/example/" class="nav-link">
+  案例
+</a></div><div class="nav-item"><a href="https://github.com/lin-xi/kidi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/kidi/guide/" class="sidebar-heading clickable"><span>教程</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/kidi/guide/introduce.html" class="sidebar-link">介绍</a></li><li><a href="/kidi/guide/install.html" class="sidebar-link">安装</a></li><li><a href="/kidi/guide/cli.html" class="sidebar-link">客户端工具</a></li><li><a href="/kidi/guide/5min.html" class="sidebar-link">快速入门</a></li><li><a href="/kidi/guide/router.html" class="sidebar-link">路由</a></li><li><a href="/kidi/guide/model.html" class="sidebar-link">模型</a></li><li><a href="/kidi/guide/service.html" class="sidebar-link">服务</a></li><li><a href="/kidi/guide/database.html" class="sidebar-link">数据库</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/kidi/guide/middleware" class="sidebar-heading clickable"><span>中间件</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/kidi/guide/config.html" class="sidebar-link">全局配置</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/kidi/guide/deploy.md" class="sidebar-heading clickable"><span>运行部署</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/kidi/guide/example/" class="sidebar-heading clickable"><span>案例</span> <span class="arrow right"></span></a> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/kidi/api/" class="sidebar-heading clickable router-link-active open"><span>API</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/kidi/api/app.html" class="sidebar-link">app</a></li><li><a href="/kidi/api/context.html" aria-current="page" class="active sidebar-link">context</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/kidi/api/context.html#api" class="sidebar-link">API</a></li></ul></li><li><a href="/kidi/api/request.html" class="sidebar-link">request</a></li><li><a href="/kidi/api/response.html" class="sidebar-link">response</a></li><li><a href="/kidi/api/router.html" class="sidebar-link">router</a></li><li><a href="/kidi/api/model.html" class="sidebar-link">model</a></li><li><a href="/kidi/api/service.html" class="sidebar-link">service</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/kidi/cli/" class="sidebar-heading clickable"><span>CLI</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/kidi/cli/cli.html" class="sidebar-link">命令行工具</a></li><li><a href="/kidi/cli/database.html" class="sidebar-link">数据管理</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="上下文-context"><a href="#上下文-context" class="header-anchor">#</a> 上下文(Context)</h1> <p>kidi的 context 是 Koa Context 实例，将 node 的 request 和 response 对象封装到单个对象中，为编写 Web 应用程序和 API 提供了许多有用的方法。 这些操作在 HTTP 服务器开发中频繁使用，它们被添加到此级别而不是更高级别的框架，这将强制中间件重新实现此通用功能。</p> <p><em>每个</em> 请求都将创建一个 Context，并在中间件中作为接收器引用，或者 ctx 标识符，如以下代码片段所示：</p> <div class="language- extra-class"><pre class="language-text"><code>app.use(async ctx =&gt; {
+    ctx; // 这是 Context
+    ctx.request; // 这是 koa Request
+    ctx.response; // 这是 koa Response
+});
+</code></pre></div><p>为方便起见许多上下文的访问器和方法直接委托给它们的 ctx.request 或 ctx.response ，不然的话它们是相同的。 例如 ctx.type 和 ctx.length 委托给 response 对象，ctx.path 和 ctx.method 委托给 request。</p> <h2 id="api"><a href="#api" class="header-anchor">#</a> API</h2> <p>Context 具体方法和访问器.</p> <p><strong>ctx.req</strong></p> <p>Node 的 request 对象.</p> <p><strong>ctx.res</strong></p> <p>Node 的 response 对象.</p> <p>绕过 Koa 的 response 处理是 不被支持的. 应避免使用以下 node 属性：</p> <p>res.statusCode
+res.writeHead()
+res.write()
+res.end()
+ctx.request
+koa 的 Request 对象.</p> <p><strong>ctx.response</strong></p> <p>koa 的 Response 对象.</p> <p><strong>ctx.state</strong></p> <p>推荐的命名空间，用于通过中间件传递信息和你的前端视图。</p> <p>ctx.state.user = await User.find(id);
+ctx.app
+应用程序实例引用</p> <p><strong>ctx.app.emit</strong></p> <p>Koa 应用扩展了内部 EventEmitter。ctx.app.emit 发出一个类型由第一个参数定义的事件。对于每个事件，您可以连接 &quot;listeners&quot;，这是在发出事件时调用的函数。有关更多信息，请参阅错误处理文档。</p> <p><strong>ctx.cookies.get(name, [options])</strong></p> <p>通过 options 获取 cookie name:</p> <p>signed 所请求的 cookie 应该被签名
+koa 使用 cookies 模块，其中只需传递参数。</p> <p><strong>ctx.cookies.set(name, value, [options])</strong></p> <p>通过 options 设置 cookie name 的 value :</p> <p>maxAge: 一个数字, 表示从 Date.now() 得到的毫秒数.
+expires: 一个 Date 对象, 表示 cookie 的到期日期 (默认情况下在会话结束时过期).
+path: 一个字符串, 表示 cookie 的路径 (默认是/).
+domain: 一个字符串, 指示 cookie 的域 (无默认值).
+secure: 一个布尔值, 表示 cookie 是否仅通过 HTTPS 发送 (HTTP 下默认为 false, HTTPS 下默认为 true). 阅读有关此参数的更多信息.
+httpOnly: 一个布尔值, 表示 cookie 是否仅通过 HTTP(S) 发送，, 且不提供给客户端 JavaScript (默认为 true).
+sameSite: 一个布尔值或字符串, 表示该 cookie 是否为 &quot;相同站点&quot; cookie (默认为 false). 可以设置为 'strict', 'lax', 'none', 或 true (映射为 'strict').
+signed: 一个布尔值, 表示是否要对 cookie 进行签名 (默认为 false). 如果为 true, 则还会发送另一个后缀为 .sig 的同名 cookie, 使用一个 27-byte url-safe base64 SHA1 值来表示针对第一个 Keygrip 键的 cookie-name=cookie-value 的哈希值. 此签名密钥用于检测下次接收 cookie 时的篡改.
+overwrite: 一个布尔值, 表示是否覆盖以前设置的同名的 cookie (默认是 false). 如果是 true, 在同一个请求中设置相同名称的所有 Cookie（无论路径或域）是否在设置此 Cookie 时从 Set-Cookie 消息头中过滤掉.
+koa 使用传递简单参数的 cookies 模块。</p> <p><strong>ctx.throw([status], [msg], [properties])</strong></p> <p>用来抛出一个包含 .status 属性错误的帮助方法，其默认值为 500。这样 Koa 就可以做出适当地响应。</p> <p>允许以下组合：</p> <div class="language- extra-class"><pre class="language-text"><code>ctx.throw(400);
+ctx.throw(400, 'name required');
+ctx.throw(400, 'name required', { user: user });
+
+</code></pre></div><p>例如 ctx.throw(400, 'name required') 等效于:</p> <div class="language- extra-class"><pre class="language-text"><code>const err = new Error('name required');
+err.status = 400;
+err.expose = true;
+throw err;
+
+</code></pre></div><p>请注意，这些是用户级错误，并用 err.expose 标记，这意味着消息适用于客户端响应，这通常不是错误消息的内容，因为您不想泄漏故障详细信息。</p> <p>你可以根据需要将 properties 对象传递到错误中，对于装载上传给请求者的机器友好的错误是有用的。这用于修饰其人机友好型错误并向上游的请求者报告非常有用。</p> <p><strong>ctx.throw(401, 'access_denied', { user: user });</strong></p> <p>koa 使用 http-errors 来创建错误。status 只应作为第一个参数传递。</p> <p><strong>ctx.assert(value, [status], [msg], [properties])</strong></p> <p>当 !value 时抛出一个类似 .throw 错误的帮助方法。这与 node 的 assert() 方法类似.</p> <p><strong>ctx.assert(ctx.state.user, 401, 'User not found. Please login!');</strong></p> <p>koa 使用 http-assert 作为断言。</p> <p><strong>ctx.respond</strong></p> <p>为了绕过 Koa 的内置 response 处理，你可以显式设置 ctx.respond = false;。 如果您想要写入原始的 res 对象而不是让 Koa 处理你的 response，请使用此参数。</p> <p>请注意，Koa <em>不</em> 支持使用此功能。这可能会破坏 Koa 中间件和 Koa 本身的预期功能。使用这个属性被认为是一个 hack，只是便于那些希望在 Koa 中使用传统的 fn(req, res) 功能和中间件的人。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/kidi/assets/js/app.d279499f.js" defer></script><script src="/kidi/assets/js/2.e26b6411.js" defer></script><script src="/kidi/assets/js/9.5001ff72.js" defer></script>
+  </body>
+</html>
