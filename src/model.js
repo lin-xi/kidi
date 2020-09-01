@@ -24,6 +24,10 @@ export default class ModelBase {
     }
   }
 
+  synchronize() {
+    this.db.synchronize();
+  }
+
   create(name, options) {
     let opts = Object.assign(options, { name });
     const m = new EntitySchema(opts);
