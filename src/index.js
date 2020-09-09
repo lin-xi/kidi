@@ -16,18 +16,33 @@ import Service from "./service.js";
 
 import globalConfig from "../package.json";
 
-const ROOT = path.resolve();
+const ROOT = path.dirname(process.argv[1]);
+console.log("📁 root:", ROOT);
 const app = new Koa();
 
 //读取配置文件
 let configPath = path.join(ROOT, "server.config.json");
 let config = {};
+config.ROOT = ROOT;
+app.config = config;
+
 if (fs.existsSync(configPath)) {
-  config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  let content = fs.readFileSync(configPath, "utf8");
+  try {
+    config = Object.assign(config, JSON.parse(content));
+  } catch (err) {
+    console.log(`💣 server.config.json json parse error`);
+  }
+}
+
+function log(...args) {
+  if (config && config.debug) {
+    console.log("💡 ", ...args);
+  }
 }
 
 // 模型
-let model = new Model(config);
+let model = new Model();
 app.models = model;
 
 let services = new Service(app);
@@ -65,16 +80,18 @@ app.use(
     br: false, // disable brotli
   })
 );
+log("gzip is enabled");
+
 app.use(etag());
 //logger
 app.use(logger());
 //favicon
-app.use(favicon(ROOT + "public/favicon.ico"));
+app.use(favicon(path.join(ROOT, "public/favicon.ico")));
 //response time
 app.use(responseTime({ hrtime: true }));
 
 //start server
-app.run = (port, configuration) => {
+app.run = async (port, configuration) => {
   if (configuration) {
     config = Object.assign(config, configuration);
   }
@@ -83,50 +100,63 @@ app.run = (port, configuration) => {
     let sp = path.join(ROOT, config.staticPath);
     app.use(staticRoot(sp));
   }
-  setTimeout(async () => {
-    //初始化模型
-    importModules("server/models");
-    //初始化服务
-    importModules("server/services");
-    //初始化路由
-    importModules("server/routers");
-    await model.connect(config);
-    //启动
-    app.listen(port);
-    /*
-    console.log(' ')
-    console.log(' ')
-    console.log('      88                      88      ')
-    console.log('      88         88           88  88  ')
-    console.log('      88   ,d8        ,adPPYb,88      ')
-    console.log('      88 ,a8"    88  a8"    `Y88  88  ')
-    console.log('      8888[      88  8b       88  88  ')
-    console.log('      88`"Yba,   88  "8a,   ,d88  88  ')
-    console.log('      88   `Y8a  88   `"8bbdP"Y8  88  ')
-    console.log(' ')
-    console.log(`   = = = = = = = = v${globalConfig.version} = = = = = = =`)
-    console.log(' ')
-    */
-    console.log(`kidi started at 🚀: http://localhost:${port}`);
-  }, 500);
+  // 连接数据库
+  await model.connect(config);
+  //初始化模型
+  log("init model");
+  await importModules("models");
+  log(Object.keys(model.models));
+
+  //初始化服务
+  log("init service");
+  await importModules("services");
+  log(Object.keys(services.services));
+
+  //初始化路由
+  log("init routers");
+  await importModules("routers");
+
+  //启动
+  app.listen(port);
+  /*
+  console.log(' ')
+  console.log(' ')
+  console.log('      88                      88      ')
+  console.log('      88         88           88  88  ')
+  console.log('      88   ,d8        ,adPPYb,88      ')
+  console.log('      88 ,a8"    88  a8"    `Y88  88  ')
+  console.log('      8888[      88  8b       88  88  ')
+  console.log('      88`"Yba,   88  "8a,   ,d88  88  ')
+  console.log('      88   `Y8a  88   `"8bbdP"Y8  88  ')
+  console.log(' ')
+  console.log(`   = = = = = = = = v${globalConfig.version} = = = = = = =`)
+  console.log(' ')
+  */
+  console.log(`kidi started at 🚀: http://localhost:${port}`);
 };
 
-function importModules(dirPath) {
-  if (fs.existsSync(path.join(ROOT, dirPath))) {
-    let files = fs.readdirSync(path.join(ROOT, dirPath));
-    files.forEach((file) => {
-      import(path.join(ROOT, dirPath, file));
+async function importModules(dirPath) {
+  let dir = path.join(ROOT, dirPath);
+  if (fs.existsSync(dir)) {
+    let files = fs.readdirSync(dir);
+    files.forEach(async (file) => {
+      if (path.extname(file) === ".js") {
+        log(path.join(dir, file));
+        await import(path.join(dir, file));
+      }
     });
+  } else {
+    console.log(`- 💣 ${dir} not exist`);
   }
 }
 // service decoration
 function service(name, ...injection) {
-  return function (target) {
+  return function(target) {
     services.create(name, target, injection);
   };
 }
 
-service.create = function (name, target, ...injection) {
+service.create = function(name, target, ...injection) {
   services.create(name, target, injection);
 };
 

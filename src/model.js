@@ -1,6 +1,5 @@
 import path from "path";
-import { EntitySchema, getRepository, createConnection } from "typeorm";
-const ROOT = path.resolve();
+import { EntitySchema, createConnection } from "typeorm";
 
 export default class ModelBase {
   constructor() {
@@ -8,6 +7,7 @@ export default class ModelBase {
   }
 
   async connect(config) {
+    this.config = config;
     if (config && config.database) {
       let dbconfig = config.database;
       if (dbconfig) {
@@ -15,7 +15,7 @@ export default class ModelBase {
           case "mysql":
           case "postgres":
           case "sqlite":
-            this.db = await this.connectSqlite(dbconfig);
+            this.db = await this.connectSqlite(dbconfig, config);
             // this.db.synchronize(true);
             console.log("🟠 database connected!");
             break;
@@ -24,65 +24,110 @@ export default class ModelBase {
     }
   }
 
+  async connectSqlite(opts, config) {
+    if (opts.database) {
+      opts.database = path.join(config.ROOT, opts.database);
+      console.log("🟠 db file path:", opts.database);
+    }
+    opts.entities = Object.values(this.models).map((item) => item.entity);
+    const connection = await createConnection(opts);
+    return connection;
+  }
+
   synchronize() {
-    this.db.synchronize();
+    if (this.db) {
+      this.db.synchronize();
+    }
   }
 
   create(name, options) {
-    let opts = Object.assign(options, { name });
-    const m = new EntitySchema(opts);
-    this.models[name] = new Model(m);
+    options.name = name;
+    this.log(`create model [${name}]`, options);
+    const m = new EntitySchema(options);
+    this.models[name] = new Model(m, this.db);
     return this.models[name];
   }
 
-  connectSqlite(opts) {
-    if (opts.database) {
-      opts.database = path.join(ROOT, opts.database);
+  log(...args) {
+    if (this.config && this.config.debug) {
+      console.log("💡 ", ...args);
     }
-    opts.entities = Object.values(this.models).map((item) => item.entity);
-    return createConnection(opts);
   }
 }
 
 class Model {
-  constructor(entity) {
+  constructor(entity, connection) {
     this.entity = entity;
+    this.connection = connection;
+    this.getRepository = connection.getRepository;
+    this.respository = connection.getRepository(entity);
   }
   async add(data) {
-    const respository = getRepository(this.entity);
-    let record = respository.create(data);
-    return respository.save(record);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model add:", data);
+    let record = this.respository.create(data);
+    return this.respository.save(record);
   }
   async remove(instance) {
-    const respository = getRepository(this.entity);
-    return respository.remove(instance);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model remove:", instance);
+    return this.respository.remove(instance);
   }
   async delete(where) {
-    const respository = getRepository(this.entity);
-    return respository.delete(where);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model delete:", where);
+    return this.respository.delete(where);
   }
   async merge(instance, data) {
-    const respository = getRepository(this.entity);
-    return respository.merge(instance, data);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model merge:", instance, data);
+    return this.respository.merge(instance, data);
   }
   async update(where, data) {
-    const respository = getRepository(this.entity);
-    return respository.update(where, data);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model update:", where, data);
+    return this.respository.update(where, data);
   }
   async count(where) {
-    const respository = getRepository(this.entity);
-    return respository.count(where);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model query:", where);
+    return this.respository.count(where);
   }
   async find(where) {
-    const respository = getRepository(this.entity);
-    return respository.find(where);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model query:", where);
+    return this.respository.find(where);
   }
   async findAndCount(where) {
-    const respository = getRepository(this.entity);
-    return respository.findAndCount(where);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model query:", where);
+    return this.respository.findAndCount(where);
   }
   async findOne(where) {
-    const respository = getRepository(this.entity);
-    return respository.findOne(where);
+    if (!this.respository) {
+      return new Error("database is not connected");
+    }
+    console.log("🟠 model query:", where);
+    return this.respository.findOne(where);
+  }
+  async executeSQL(sql) {
+    const rawData = await this.connection.query(sql);
+    return rawData;
   }
 }
