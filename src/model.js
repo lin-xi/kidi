@@ -31,6 +31,10 @@ export default class ModelBase {
     }
     opts.entities = Object.values(this.models).map((item) => item.entity);
     const connection = await createConnection(opts);
+    // set connection
+    Object.values(this.models).forEach((mod) => {
+      mod.setConnection(connection);
+    });
     return connection;
   }
 
@@ -44,7 +48,7 @@ export default class ModelBase {
     options.name = name;
     this.log(`create model [${name}]`, options);
     const m = new EntitySchema(options);
-    this.models[name] = new Model(m, this.db);
+    this.models[name] = new Model(m);
     return this.models[name];
   }
 
@@ -56,11 +60,12 @@ export default class ModelBase {
 }
 
 class Model {
-  constructor(entity, connection) {
+  constructor(entity) {
     this.entity = entity;
+  }
+  setConnection(connection) {
     this.connection = connection;
-    this.getRepository = connection.getRepository;
-    this.respository = connection.getRepository(entity);
+    this.respository = connection.getRepository(this.entity);
   }
   async add(data) {
     if (!this.respository) {

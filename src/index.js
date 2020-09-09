@@ -100,12 +100,14 @@ app.run = async (port, configuration) => {
     let sp = path.join(ROOT, config.staticPath);
     app.use(staticRoot(sp));
   }
-  // 连接数据库
-  await model.connect(config);
+
   //初始化模型
   log("init model");
   await importModules("models");
   log(Object.keys(model.models));
+
+  // 连接数据库
+  await model.connect(config);
 
   //初始化服务
   log("init service");
@@ -151,12 +153,12 @@ async function importModules(dirPath) {
 }
 // service decoration
 function service(name, ...injection) {
-  return function(target) {
+  return function (target) {
     services.create(name, target, injection);
   };
 }
 
-service.create = function(name, target, ...injection) {
+service.create = function (name, target, ...injection) {
   services.create(name, target, injection);
 };
 
