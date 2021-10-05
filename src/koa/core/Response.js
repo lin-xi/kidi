@@ -55,6 +55,11 @@ export default class Response {
     return this;
   }
 
+  end(value) {
+    this.response.body = value;
+    return this;
+  }
+
   redirect(url, alt) {
     this.response.redirect(url, alt);
     return this;

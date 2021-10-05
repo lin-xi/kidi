@@ -1,77 +1,95 @@
 import Router from "koa-router";
-import Response from "./response.js";
+import context from "./context.js";
+import Response from "./Response.js";
 
-export default class Route {
+export default class KoaRoute {
   constructor(app) {
     this.app = app;
     this.router = new Router();
-    this.services = app.services.services;
   }
 
   get(path, middleware) {
     this.router.get(path, (ctx, next) => {
       let res = new Response(this.app, ctx);
-      return middleware.apply(this.router, [ctx, res, next, this.services]);
+      return middleware.apply(this.router, [ctx, res]);
     });
     this._registerRouter();
-    this.log("GET", path);
     return this;
   }
   post(path, middleware) {
     this.router.post(path, (ctx, next) => {
       let res = new Response(this.app, ctx);
       ctx.body = ctx.request.body;
-      return middleware.apply(this.router, [ctx, res, next, this.services]);
+      return middleware.apply(this.router, [ctx, res]);
     });
     this._registerRouter();
-    this.log("POST", path);
     return this;
   }
   put(path, middleware) {
     this.router.put(path, (ctx, next) => {
       let res = new Response(this.app, ctx);
       ctx.body = ctx.request.body;
-      return middleware.apply(this.router, [ctx, res, next, this.services]);
+      return middleware.apply(this.router, [ctx, res]);
     });
     this._registerRouter();
-    this.log("PUT", path);
     return this;
   }
   patch(path, middleware) {
     this.router.patch(path, (ctx, next) => {
       let res = new Response(this.app, ctx);
       ctx.body = ctx.request.body;
-      return middleware.apply(this.router, [ctx, res, next, this.services]);
+      return middleware.apply(this.router, [ctx, res]);
     });
     this._registerRouter();
-    this.log("PATCH", path);
     return this;
   }
   delete(path, middleware) {
+    let app = this.app;
     this.router.delete(path, (ctx, next) => {
-      let res = new Response(this.app, ctx);
+      let res = new Response(app, ctx);
       ctx.body = ctx.request.body;
-      return middleware.apply(this.router, [ctx, res, next, this.services]);
+      return middleware.apply(this.router, [ctx, res]);
     });
     this._registerRouter();
-    this.log("DELETE", path);
     return this;
   }
   all(path, middleware) {
     this.router.all(path, (ctx, next) => {
       let res = new Response(this.app, ctx);
       ctx.body = ctx.request.body;
-      return middleware.apply(this.router, [ctx, res, next, this.services]);
+      return middleware.apply(this.router, [ctx, res]);
     });
     this._registerRouter();
-    this.log("ALL", path);
     return this;
   }
+
+  //中间件
+  //支持两种形式：
+  // 1：middleware是一个函数数组,[fn, fn]
+  // 2：middleware是一个[函数,上下文]数组, [[fn, context], [fn, context]]
   use(pattern, middleware) {
-    this.router.use(pattern, (ctx, next) => {
-      let res = new Response(this.app, ctx);
-      return middleware.apply(this.router, [ctx, res, next, this.services]);
+    let self = this;
+    let proxyMiddles = middleware.map((fn) => {
+      if (typeof fn === "function") {
+        return function (ctx, next) {
+          let res = new Response(self.app, ctx);
+          return fn.apply(self.router, [ctx, res, next]);
+        };
+      } else if (Array.isArray(fn) && fn.length === 2) {
+        return function (ctx, next) {
+          let res = new Response(self.app, ctx);
+          switch (fn[1].constructor.name) {
+            case "InterceptorMidddleware":
+              return fn[0].apply(fn[1], [ctx, next]);
+              break;
+            default:
+              return fn[0].apply(fn[1], [ctx, res, next]);
+              break;
+          }
+        };
+      }
     });
+    this.router.use(pattern, proxyMiddles);
     this._registerRouter();
     return this;
   }
@@ -95,11 +113,5 @@ export default class Route {
 
   _registerRouter() {
     this.app.use(this.router.routes(), this.router.allowedMethods());
-  }
-
-  log(...args) {
-    if (this.app && this.app.config && this.app.config.debug) {
-      console.log("💡 ", ...args);
-    }
   }
 }
